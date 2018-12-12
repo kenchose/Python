@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h1>Welcome to the Greate Number Game!</h1>
+    <h3>I'm thinking of a number between 1 to 100</h3>
+    <p>Take a guess!</p>
+    {% with messages = get_flashed_messages()%}
+        {% if messages %}
+            {% for mess in messages %}
+                {{mess}}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/guess" method="post">
+        <input type="text" name='guess'>
+        <br>
+        <input type="submit" value="My guess">
+    </form>
+</body>
+<!-- {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %} -->
