@@ -1,0 +1,1 @@
+Write a program that prints a 'checkerboard' pattern to the console.
