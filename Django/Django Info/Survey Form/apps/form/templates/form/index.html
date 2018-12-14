@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey 2</title>
+</head>
+<body>
+    <form action = '/process' method='post'>
+        {% csrf_token %}
+        <p>Full Name:<input type='text' name='name'></p>
+        <p>Location: 
+        <select name = 'location'>
+            <option value = 'Burbank'>Burbank</option>>
+            <option value = 'Seattle'>Seattle</option>>
+            <option value = 'New York'>New York</option>
+            <option value = 'Los Angeles'>Los Angeles</option>>            
+        </select>
+        </p>
+        <p>Favorite Language: 
+        <select name = 'favorite'>
+            <option value = 'PHP'>PHP</option>>
+            <option value = 'Python'>Python</option>>
+            <option value = 'Javascript'>Javascript</option>
+            <option value = 'CSS'>CSS</option>>            
+        </select>
+        </p>
+        <p>Comments (optional)
+        <br>
+        <textarea name='comment' rows ='8' cols = '80'></textarea>
+        </p>
+        <input type='submit' value='Submit'>
+    </form>
+</body>
+</html>
