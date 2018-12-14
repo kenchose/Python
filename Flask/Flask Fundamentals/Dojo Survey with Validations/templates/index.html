@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Form test index</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> <!--added color to error messages-->
+    </head>
+    <body>
+        <h1>Survey</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <li><p class="error">{{message}}</p></li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <form action='/create' method='post'>
+                <p>Your Name: <input type='text' name='name'/></p>
+                <p>
+                    Dojo location:
+                    <select name='location'>
+                        {% for i in option_list %}
+                            <option name="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select> 
+                </p>
+                <p>
+                    Favorite Language:
+                    <select name='language'>
+                        {% for j in language_list %}
+                            <option name="{{ j }}">{{ j }}</option>
+                        {% endfor %}
+                    </select> 
+                </p>
+                Comment:
+                <br>
+                <textarea rows="4" cols="50" name='comment'></textarea>
+                <br>
+                <input type='submit' value='Submit'>
+            </form>
+            <!-- <form action="reset" method="post">
+                <input type="submit" value="Reset">
+            </form> -->
+    </body>
+</html>
