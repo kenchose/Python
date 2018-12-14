@@ -1,0 +1,25 @@
+1. Make sure you link your apps in settings, urls within the project, create an urls in your app, and your templates/static files, migrations
+2.Craete your beginning url page which is the index
+3. Create the method in your views.py
+    a. make sure the surver is running correctly by using HpptResponse
+4. Create your form submissions that takes in a 'post'
+    a. action takes in the second views and the functionality
+    b. create the looks of the html page
+    c. remember to create your csrf token
+5. Views 
+    a. For validity purposes, before creating a post you want to make sure there is a post request 
+        1. line 12
+
+6. html page
+    a. you can create endif statements, or conditional statements, to check if a person is logged in or not
+    b. 19-23
+        1. if there is an input of a nmae through session, show a div on my webpage. If not, then don't show me a div
+    c. Similarily, line 10-18, if there isn't a name in session, then show me a div I've created in my html which should show a div if you haven't entered a name
+    d. All submissions have to go throught the same route, but how do you differeentiate each one if they're going through the same route?
+        1. In the <form action=process/change_url_name>
+
+7. urls
+    a. Because we changed all these process routes, we have to create them in the urls page by using a    URL parameter instead of creating each and every single one of them 
+        1. referr to line 20-21 or ninja gold videeo  at 26
+
+    
