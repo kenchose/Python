@@ -1,0 +1,25 @@
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <h3>Random Word (attempt # {{request.session.attempt}}) </h3>
+                <div>
+                    <h1>{{ request.session.string }}</h1> 
+                </div>
+            <form action="random_word" method='post'>
+                {% csrf_token %}
+                <a href="/"><button>Generate</button></a>
+            </form>
+        </div>
+        <div>
+            <form action='reset' method='post'>
+                {% csrf_token %}
+                <a href="/"><button>Reset</button></a>
+            </form>
+        </div>
+    </body>
+</html>
