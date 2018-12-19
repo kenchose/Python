@@ -1,0 +1,32 @@
+Create 3 dojos
+--Dojo.objects.create(name, name,)
+
+Delete the three dojos you created
+--Dojo.objects.all().delete()
+Or
+--Dojo.objects.get(id=1).delete()
+
+Create 3 additional dojos by using Dojo.object.create
+--Dojo.objects.create(name,anem)
+
+Create 3 ninjas that belong to the first dojo you created
+-- ninja1_la = Ninja.objects.create(info, info, dojo = Dojo.objects.get(id=4))
+
+Create 3 more ninjas and have them belong to the second dojo you created
+//same
+
+Create 3 more ninjas and have them belong to the second dojo you created
+//same
+
+Be able to retrieve all ninjas that belong to the first Dojo
+-- Dojo.objects.first().ninjas.all()
+
+Be able to retrieve all ninjas that belong to the last Dojo
+-- Dojo.objects.last().ninjas.all()
+
+Add a new field in the Dojo class (found in your models.py) called 'desc'. Allow 'desc' to hold long text (more than 255 characters). To forward engineer the change, run the appropriate migration commands. Successfully run the migration files and check the records to make sure the new field was added successfully.
+--You will run into an error because you're trying to add a column to an existing table which will have non-existng rows which should be populated. Therefore, you would just put null=True to fix this problem. You will be able to alter/update your records at anytime
+    Updating the record - once you obtain an object that has the record you want to modify, use save() to update the record.  For example
+    b = Blog.objects.first() # gets the first record in the blogs table
+    b.name = "CodingDojo Blog"  # set name to be "CodingDojo Blog"
+    b.save() # updates the blog record
