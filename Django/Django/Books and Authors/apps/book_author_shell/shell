@@ -1,0 +1,75 @@
+Main point of this assignment is to know that the relationship will be 'author'
+Makemigrations and migrate
+To check everything is working, go into shell and type in from app.book_author_shell.models import *
+Create name and books
+Book.objects.create(name='')
+Or
+Author.objects.create(name='')
+
+
+Change the name of the 5th book to C#
+    new_name = Book.objects.get(id=5)
+    new_name.name='C#'
+    new_name.save()
+    Book.objects.get(id=5) name should = C#
+
+Change the first_name of the 5th author to Ketul
+    new_name_author = Author.objects.get(id=5)
+    new_name_author.first_name='Ketul'
+    new_name_author.save()
+    Author.objects.get(id=5) name should = Ketul
+
+Assign the first author to the first 2 books
+    first_author = Author.objects.get(id=1)
+    first_book = Book.objects.get(id=1)
+    first_book.author.add(first_author) 
+        #book.add or author.add depends on which table the many2many key is on. In this one the key is on the Book table, therefore we have the book then add the author
+        #to check
+    first_author = Author.objects.get(id=1)
+    second_book = Book.objects.get(id=2)
+    second_book.author.add(first_author) 
+        #to see the books the author has
+            first_author.books.all() 
+                books = related_name
+
+Assign the second author to the first 3 books
+    third_book = Book.objects.get(id=3)
+    first_book.author.add(second_author)
+    second_book.author.add(second_author)
+    third_book.author.add(second_author)
+    second_author.books.all()
+        #to check to see how many books the author has
+
+Assign the third author to the first 4 books
+    third_author = Author.objects.get(id=3)
+    fourth_book = Book.objects.get(id=4)
+    first_book.author.add(third_author)
+    second_book.author.add(third_author)
+    third_book.author.add(third_author)
+    fourth_book.author.add(third_author)
+    third_author.books.all()
+        #look at the columns of created book by the author
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+    Same steps as above assignment
+    WHY? all_books.author.add(fourth_author)
+        'QuerySet' object has no attribute 'author'
+
+For the 3rd book, retrieve all the authors
+    third_book.author.all()
+
+For the 3rd book, remove the first author
+    remove_first_author = third_book.author.get(id=2)
+        id_2 and not 2 because id_1 doesnt exist because of a mistake I did
+    remove_first_author.delete()
+
+For the 2nd book, add the 5th author as one of the authors
+    fifth_author = Author.objects.get(id=5)
+    second_book.author.add(fifth_author)
+
+Find all the books that the 3rd author is part of
+    third_author.books.all()
+
+Find all the books that the 2nd author is part of
+    second_author.books.all()
+        why is there an empty queryset?
