@@ -1,0 +1,42 @@
+League.objects.filter(sports__contains='baseball')
+    __containe = 'like'
+
+League.objects.filter(name__contains='women')
+
+League.objects.filter(sport__contains='hockey')
+
+League.objects.exclude(sport__contains='football')
+
+League.objects.filter(name__contains='conferences')
+
+League.objects.filter(name__contains='atlantic')
+
+Team.objects.filter(location='Dallas')
+
+Team.objects.filter(team_name='Raptors')
+
+Team.objects.filter(location__contains='city')
+
+Team.objects.filter(team_name__startswith='T')
+    __startswith = starts with this/these charactetrs
+
+Team.objects.order_by('location')
+    '-location' would lbe the inverse
+
+Team.objects.order_by('-team_name')
+
+Player.objects.filter(last_name='Cooper')
+
+Player.objects.filter(first_name ='Joshua')
+
+Player.objects.filter(last_name='Cooper').exclude(first_name='Joshua')
+
+Player.objects.filter(first_name="Alexander')|Player.objects.filter(first_name="Wyatt')
+
+
+
+
+
+
+
+
