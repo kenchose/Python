@@ -1,0 +1,79 @@
+Create 3 different user accounts:
+--User.objects.create(name='')
+
+
+Have the first user create/upload 2 books:
+--user1 = User.objects.get(id=1)
+--user1_book1 = Book.objects.create(name="user1_book1", uploaded_by = user1)
+--user1_book2 = Book.objects.create(name="user1_book2", uploaded_by=User.objects.first())
+--check
+    --User.objects.get(id=1).uploader.all()
+    --User.objects.first().uploader.get(id=1)
+    --User.objects.first().uploader.get(id=2)
+
+
+Have the second user create/upload 2 other books:
+--user2_book2 = Book.objects.create(name="user2_book1", uploaded_by = User.objects.get(id=2))
+--user2 = User.objec
+--Book.objects.create(name="user2_book2", uploaded_by = user2)
+--check
+    --User.objects.get(id=2).uploader.get(id=3)
+    --User.objects.get(id=2).uploader.get(id=4)
+
+
+Have the third user create/upload 2 other books:
+--user3 = User.objects.get(id=3)
+--Book.objects.create(name="user3_book1", uploaded_by = user3)
+--Book.objects.create(name="user3_book2", uploaded_by = User.objects.get(id=3))
+--check 
+    --User.objects.get(id=3).uploader.get(id=5)
+    --User.objects.get(id=3).uploader.get(id=6)
+    --User.objects.get(id=3).uploader.all()
+
+
+Have the first user like the last book and the first book:
+--user1 = User.objects.first()
+--book1 = Book.objects.first()
+--book_last = Book.objects.last()
+--user1.likes.add(book1)
+--user1.likes.add(book_last)
+    --to check the likes, user1.likes.all()
+    --reverse look up, liked_by.book1.all()
+
+
+Have the third user like the first book and the third book
+--since we already have book1 = Book.objects.get(id=1), all we need to do now is create book3
+--book3 = Book.objects.get(id=3)
+--user3 = User.objects.get(id=3)
+--user3.likes.add(book1, book3)
+    --to check the likes, user3.likes.all()
+    --check individual likes, user3.likes.get(id=1)
+
+
+Have the second user like all books
+--make sure all books have a variable; book1, book2, book3, etc
+--user2.likes.add(book1, book2, book3, book4, book5, book6)
+
+
+Display all users who like the first book
+--book1 = Book.objects.first()
+--book2.liked_by.all()
+
+
+Display the user who uploaded the first book:
+__Didn't have any user upload any books so I did it here
+--User.objects.get(id=1).uploader.add(Book.objects.get(id=1)) ------ is this correct?
+
+__Now to check if they were uplaoded coorectly__
+--Book.objects.first().uploaded_by.first_name
+
+Display all users who like the second book
+--book2.liked_by.all()
+
+
+Display the user who uploaded the second book
+--Book.objects.get(id=2).uplaoded_by.first_name
+
+Display how many many people liked the first book:
+--book1 = Book.objects.first()
+--book1.liked_by.count()
