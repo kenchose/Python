@@ -1,0 +1,49 @@
+#create models and makemigraions/migrate
+python manage.py makemigrations #updates models
+python manage.py migrate        #creates migration
+
+
+#how to enter shell
+python manage.py shell 
+from apps.user_login.models import * #within the shell import everything from the models and to check if the models are working. Write a query to get all objects (which should be empty) and expect an empty query set
+
+
+
+#crate new 
+User.objects.create(first_name = 'Kenny', last_name = 'Phame, email='kenny@pham.com, age=10) #for created at updated at can we use NOW()?
+
+
+#retrieve all users
+User.objects.all() 
+
+
+#retrieve last user
+User.objects.last() 
+
+
+#retrieve information from the first user
+User.objects.first() 
+OR
+User.objects.get(id=1) 
+
+
+#method will print the acutal value other than just displaying as an object
+__str__ 
+OR
+def __repr__(self): 
+        return "<Blog object: {} {}>".format(self.name, self.desc)
+
+
+#sort records in descdending order 
+User.objects.all().order_by("first_name" or "last_name" OR "age" etc.)
+User.objects.order_by("created_at") -- Reverse= User.objects.order_by("-created_at")
+
+
+#change last name of the third user
+user3 = User.objects.get(id=3)
+user3.last_name = 'another_name'
+user3.save()
+
+
+#delete an object
+User.objects.get(id=4).delete()
