@@ -1,0 +1,22 @@
+<!-- {% for note in all_notes %}
+    <div class="container">
+        <div id="new_note" class="col-4">
+            <div class="header">
+                <p>{{note.created_at}}</p>
+            </div>
+            <div class="body">
+                <p>{{note.note}}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %} -->
+
+<div class="container" >
+        <div id="new_note" class="col-6 border">
+            {% for note in all_notes %}
+                <p>{{note.created_at}}</p>
+                <p>{{note.note}}</p>
+            {% endfor %}
+        </div>
+    </div>
+
