@@ -1,0 +1,16 @@
+{% for note in notes %}
+    <div class="row" id="{{note.id}}">
+        <form action="/{{note.id}}/edit" id="form_description_{{note.id}}" method="post">
+            {% csrf_token %}
+            <textarea name="description" id="description_{{note.id}}" cols="30" rows="10">{{note.description}}</textarea> 
+            <!-- id needs name and underline and id name of the note after to clear textarea/input -->
+            <br>
+            <input type="text" name="note" id="note_{{note.id}}" value="{{note.note}}">
+            <input type="submit" class="btn btn-primary" value="Edit description">
+        </form>
+        <form action="/{{note.id}}/delete" id="form_delete" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+{% endfor %}
